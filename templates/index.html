@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical AI Chatbot - Disease Prediction Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🏥 Medical AI Chatbot</h1>
+            <p class="subtitle">Your AI-Powered Health Assistant</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar for Features -->
+            <aside class="sidebar">
+                <div class="feature-card">
+                    <h3>🤖 AI Chat</h3>
+                    <p>Ask health questions and get AI-powered responses</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🔍 Disease Prediction</h3>
+                    <button id="openPredictorBtn" class="btn btn-primary">
+                        Check Symptoms
+                    </button>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📝 Features</h3>
+                    <ul class="feature-list">
+                        <li>✓ Conversation history saved</li>
+                        <li>✓ Multi-turn conversations</li>
+                        <li>✓ Disease prediction from symptoms</li>
+                        <li>✓ Precautions & severity info</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <button id="clearHistoryBtn" class="btn btn-danger">
+                        🗑️ Clear History
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Chat Area -->
+            <main class="chat-container">
+                <div id="chatMessages" class="chat-messages">
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            <strong>Medical AI Assistant</strong>
+                            <p>Hello! I'm your medical AI assistant. I can help you with:</p>
+                            <ul>
+                                <li>Answering health and medical questions</li>
+                                <li>Predicting diseases based on symptoms</li>
+                                <li>Providing health information and precautions</li>
+                            </ul>
+                            <p><em>⚠️ Note: This is for informational purposes only. Always consult a healthcare professional for medical advice.</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <form id="chatForm">
+                        <input 
+                            type="text" 
+                            id="messageInput" 
+                            placeholder="Type your message here..." 
+                            autocomplete="off"
+                            required
+                        >
+                        <button type="submit" class="btn btn-send" id="sendBtn">
+                            <span id="sendBtnText">Send</span>
+                            <span id="sendBtnLoader" class="loader" style="display: none;"></span>
+                        </button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Disease Predictor Modal -->
+    <div id="predictorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🔍 Disease Prediction</h2>
+            <p>Enter your symptoms to get disease predictions with precautions and severity information.</p>
+            
+            <div class="predictor-form">
+                <label for="symptomsInput">Enter Symptoms (comma-separated):</label>
+                <textarea 
+                    id="symptomsInput" 
+                    rows="4" 
+                    placeholder="Example: itching, skin_rash, fever, headache"
+                ></textarea>
+                
+                <button id="predictBtn" class="btn btn-primary">
+                    Analyze Symptoms
+                </button>
+                
+                <div id="predictorResults" class="predictor-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
